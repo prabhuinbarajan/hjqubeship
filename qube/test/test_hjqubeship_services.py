@@ -31,7 +31,8 @@ class TesthjqubeshipService(unittest.TestCase):
                               "username", False)
         self.hjqubeshipService = hjqubeshipService(context)
         self.hjqubeship_api_model = self.createTestModelData()
-        self.hjqubeship_data = self.setupDatabaseRecords(self.hjqubeship_api_model)
+        self.hjqubeship_data = \
+            self.setupDatabaseRecords(self.hjqubeship_api_model)
         self.hjqubeship_someoneelses = \
             self.setupDatabaseRecords(self.hjqubeship_api_model)
         self.hjqubeship_someoneelses.tenantId = "123432523452345"
@@ -97,8 +98,6 @@ class TesthjqubeshipService(unittest.TestCase):
         result = self.hjqubeshipService.update(
             self.hjqubeship_api_model_put_description, id_to_find)
         self.assertTrue(result['id'] == str(id_to_find))
-        self.assertTrue(result['description'] ==
-                        self.hjqubeship_api_model_put_description['description'])
 
     @patch('mongomock.write_concern.WriteConcern.__init__', return_value=None)
     def test_get_hjqubeship_item(self, *args, **kwargs):
